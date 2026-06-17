@@ -1,0 +1,253 @@
+/* ============================================================
+   style.css  –  Restaurant Menu
+   Assignment: CSS Challenge  |  Week 4
+   Fonts   : Pacifico (h1), Josefin Sans (body)
+   Icons   : FontAwesome v5.4.1
+   ============================================================ */
+
+/* ── CSS Custom Properties ──────────────────────────────────── */
+:root {
+  --gradient-start : #e91e8c;
+  --gradient-end   : #f5a623;
+  --card-bg        : #fafaf8;
+  --card-radius    : 6px;
+  --card-shadow    : 0 8px 40px rgba(0, 0, 0, 0.18);
+
+  --text-dark      : #1a1a1a;
+  --text-mid       : #444444;
+  --text-light     : #888888;
+  --divider        : #d8d8d8;
+
+  --font-body      : 'Josefin Sans', sans-serif;
+  --font-display   : 'Pacifico', cursive;
+
+  /* Official brand colours */
+  --fb-color  : #1877f2;
+  --fb-dark   : #0d5bbf;
+  --ig-dark   : #a01f4d;
+  --tw-color  : #1da1f2;
+  --tw-dark   : #0d7abf;
+}
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Body ────────────────────────────────────────────────────── */
+body {
+  font-family : var(--font-body);
+  font-size   : 15px;
+  line-height : 1.5;
+  color       : var(--text-dark);
+  min-height  : 100vh;
+  background  : linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  padding         : 3rem 1.25rem;
+}
+
+/* ── Card ────────────────────────────────────────────────────── */
+.container {
+  background    : var(--card-bg);
+  border-radius : var(--card-radius);
+  box-shadow    : var(--card-shadow);
+  width         : 100%;
+  max-width     : 560px;
+  padding       : 2.8rem 3rem 2rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.menu-header { text-align: center; margin-bottom: 1.6rem; }
+
+.menu-header h1 {
+  font-family   : var(--font-display);
+  font-size     : 3rem;
+  font-weight   : 400;
+  color         : var(--text-dark);
+  line-height   : 1.1;
+  margin-bottom : 0.45rem;
+}
+
+.menu-header .tagline {
+  font-size : 0.8rem; font-weight: 300;
+  color: var(--text-light); letter-spacing: 0.02em; font-style: italic;
+}
+
+/* ── Sections ────────────────────────────────────────────────── */
+.menu-section { margin-bottom: 1.6rem; }
+
+.menu-section h2 {
+  font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+  color: var(--text-dark);
+  border-top: 1.5px solid var(--divider);
+  padding-top: 0.7rem; margin-bottom: 0.8rem;
+}
+
+/* ── Menu Items ──────────────────────────────────────────────── */
+.menu-item {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 1rem; margin-bottom: 1rem;
+}
+
+.menu-item h3 {
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text-dark); margin-bottom: 0.15rem; line-height: 1.3;
+}
+
+.item-details p {
+  font-size: 0.78rem; font-weight: 300;
+  color: var(--text-light); font-style: italic; line-height: 1.4;
+}
+
+.price {
+  font-size: 0.9rem; font-weight: 400;
+  color: var(--text-mid); white-space: nowrap;
+  padding-top: 0.05rem; flex-shrink: 0;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.menu-footer {
+  text-align: center;
+  border-top: 1.5px solid var(--divider);
+  padding-top: 1.4rem; margin-top: 1rem;
+}
+
+.menu-footer > p {
+  font-size: 0.75rem; font-weight: 300;
+  color: var(--text-light); font-style: italic; margin-bottom: 1.2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SOCIAL ICONS
+   Each icon lives inside  <a class="social-btn social-btn--X">
+     <i class="fab fa-...">   ← FontAwesome icon
+     <span class="social-label">  ← label, hidden until hover
+   ═══════════════════════════════════════════════════════════════ */
+.social-icons {
+  display: flex; justify-content: center;
+  align-items: center; gap: 1rem;
+}
+
+/* ── Base button ─────────────────────────────────────────────── */
+.social-btn {
+  display        : inline-flex;
+  flex-direction : column;
+  align-items    : center;
+  gap            : 0.28rem;
+  text-decoration: none;
+  color          : #666;                          /* grey at rest */
+  border-radius  : 14px;
+  padding        : 0.6rem 0.9rem 0.45rem;
+  box-shadow     : 0 2px 8px rgba(0,0,0,0.10);
+  user-select    : none;
+  cursor         : pointer;
+
+  /* All transitions – springy cubic for the pop feel */
+  transition:
+    color            0.22s ease,
+    background       0.22s ease,
+    box-shadow       0.22s ease,
+    transform        0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Icon */
+.social-btn i {
+  font-size  : 1.75rem;
+  line-height: 1;
+  transition : font-size 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+/* Label – always visible, blurry + faint at rest */
+.social-label {
+  font-family    : var(--font-body);
+  font-size      : 0.6rem;
+  font-weight    : 700;
+  letter-spacing : 0.08em;
+  text-transform : uppercase;
+
+  /* Slightly faded at rest – readable but subtle */
+  opacity        : 0.5;
+  filter         : blur(0.4px);
+  color          : var(--text-mid);
+  transform      : translateY(0);
+
+  transition     :
+    opacity 0.22s ease,
+    filter  0.22s ease,
+    color   0.22s ease;
+}
+
+/* ══ HOVER – floats up, grows, background fills, label appears ══ */
+.social-btn:hover {
+  transform  : translateY(-5px) scale(1.18);
+  box-shadow : 0 10px 24px rgba(0,0,0,0.22);
+}
+.social-btn:hover i           { font-size: 2.15rem; }
+.social-btn:hover .social-label { opacity: 1; filter: blur(0); color: #fff; }
+
+/* Brand fill colours on hover */
+.social-btn--facebook:hover {
+  background : var(--fb-color);
+  color      : #fff;
+}
+.social-btn--instagram:hover {
+  background : linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  color      : #fff;
+}
+.social-btn--twitter:hover {
+  background : var(--tw-color);
+  color      : #fff;
+}
+
+/* ══ ACTIVE / PRESS – sinks + shrinks + darkens = pressed feel ══ */
+.social-btn:active {
+  transform       : translateY(2px) scale(0.91);
+  box-shadow      : 0 1px 4px rgba(0,0,0,0.14);
+  transition-duration: 0.06s;
+}
+.social-btn:active i { font-size: 1.85rem; transition-duration: 0.06s; }
+
+/* Darker shades while pressed */
+.social-btn--facebook:active  { background: var(--fb-dark);  color: #fff; }
+.social-btn--instagram:active {
+  background: linear-gradient(135deg,#c06c1e 0%,#b84e22 25%,#a01725 50%,#8a1245 75%,#721060 100%);
+  color: #fff;
+}
+.social-btn--twitter:active   { background: var(--tw-dark);  color: #fff; }
+
+/* ══ FOCUS (keyboard nav) ════════════════════════════════════════ */
+.social-btn:focus-visible {
+  outline: 3px solid var(--gradient-start);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   RESPONSIVE – Mobile  (≤ 480 px)
+   ============================================================ */
+@media screen and (max-width: 480px) {
+  body { padding: 1.5rem 0.75rem; align-items: flex-start; }
+  .container { padding: 2rem 1.4rem 1.6rem; border-radius: 4px; }
+  .menu-header h1 { font-size: 2.4rem; }
+  .menu-header .tagline { font-size: 0.75rem; }
+
+  .menu-item { flex-direction: column; gap: 0.1rem; margin-bottom: 0.85rem; }
+  .price { font-size: 0.85rem; font-weight: 600; color: var(--gradient-start); }
+
+  .menu-item h3    { font-size: 0.9rem; }
+  .item-details p  { font-size: 0.74rem; }
+  .menu-section h2 { font-size: 0.95rem; }
+  .menu-footer > p { font-size: 0.7rem; }
+
+  /* Slightly smaller icons but still easy to tap */
+  .social-btn        { padding: 0.5rem 0.7rem 0.4rem; }
+  .social-btn i      { font-size: 1.5rem; }
+  .social-btn:hover i { font-size: 1.85rem; }
+}
+
+/* ── Small tablets (481–768 px) ──────────────────────────────── */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  body { padding: 2rem 1rem; }
+  .container { padding: 2.2rem 2rem 1.8rem; }
+  .menu-header h1 { font-size: 2.7rem; }
+}
